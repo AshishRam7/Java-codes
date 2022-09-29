@@ -1,0 +1,36 @@
+import java.util.Scanner;
+class Menu
+{
+    String name;
+    Menu(String n){name=n;}
+}
+class NVeg extends Menu
+{
+    int no;
+    NVeg(String n,int n1){super(n); no=n1;}
+}
+class Fish extends NVeg{Fish(String n,int n1){super(n,n1);}}
+class Chicken extends NVeg{Chicken(String n,int n1){super(n,n1);}}
+class Veg extends Menu
+{
+    int no;
+    Veg(String n,int n1){super(n); no=n1;}
+}
+class Order <T extends NVeg>
+{
+    T pro;
+    Order(T p){pro=p;}
+    T get(){return pro;}
+}
+class Main
+{
+	public static void main(String[] args) {
+	    Scanner s=new Scanner(System.in);
+	    Order<Fish> x=new Order<>(new Fish(s.next(),s.nextInt()));
+		Order<Chicken> x1=new Order<>(new Chicken(s.next(),s.nextInt()));
+			System.out.println(x.get().name);
+		System.out.println(x.get().no);
+		System.out.println(x1.get().name);
+		System.out.println(x1.get().no);
+	}
+}
